@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import {
   BoldLink,
   BoxContainer,
+  FieldContainer,
+  FieldError,
   FormContainer,
   Input,
   MutedLink,
@@ -59,34 +61,65 @@ export function SignupForm(props) {
   return (
     <BoxContainer>
       <FormContainer onSubmit={formik.handleSubmit}>
-        <Input
-          name="fullName"
-          placeholder="Full Name"
-          value={formik.values.fullName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        <Input
-          name="email"
-          // type="email"
-          placeholder="Email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-        />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-        />
-        <Input
-          name="confirmPassword"
-          type="password"
-          placeholder="Confirm Password"
-          value={formik.values.confirmPassword}
-          onChange={formik.handleChange}
-        />
+        <FieldContainer>
+          <Input
+            name="fullName"
+            placeholder="Full Name"
+            value={formik.values.fullName}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <FieldError>
+            {formik.touched.fullName && formik.errors.fullName
+              ? formik.errors.fullName
+              : ""}
+          </FieldError>
+        </FieldContainer>
+        <FieldContainer>
+          <Input
+            name="email"
+            // type="email"
+            placeholder="Email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <FieldError>
+            {formik.touched.email && formik.errors.email
+              ? formik.errors.email
+              : ""}
+          </FieldError>
+        </FieldContainer>
+        <FieldContainer>
+          <Input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <FieldError>
+            {formik.touched.password && formik.errors.password
+              ? formik.errors.password
+              : ""}
+          </FieldError>
+        </FieldContainer>
+        <FieldContainer>
+          <Input
+            name="confirmPassword"
+            type="password"
+            placeholder="Confirm Password"
+            value={formik.values.confirmPassword}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <FieldError>
+            {formik.touched.confirmPassword && formik.errors.confirmPassword
+              ? formik.errors.confirmPassword
+              : ""}
+          </FieldError>
+        </FieldContainer>
         <SubmitButton type="submit">Signup</SubmitButton>
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
